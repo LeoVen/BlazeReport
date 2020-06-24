@@ -1,20 +1,20 @@
 ﻿using BlazeReport.Tests.Common;
 using BlazeReport.Tests.Pages;
-using BoDi;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace BlazeReport.Tests.Steps
 {
     [Binding]
-    public sealed class ButtonClick : BaseStep
+    public class BidiButtonSteps
     {
         private readonly IndexPage indexPage;
 
-        public ButtonClick(IObjectContainer objectContainer) : base(objectContainer)
+        public BidiButtonSteps(ScenarioContext scenarioContext)
         {
-            indexPage = new IndexPage(this.Driver);
+            indexPage = new IndexPage(WebDriverHooks.GetDriver(scenarioContext));
         }
 
         [Given(@"I open the index page")]
@@ -36,13 +36,6 @@ namespace BlazeReport.Tests.Steps
         {
             Thread.Sleep(1000);
             indexPage.RightClickButton();
-        }
-
-        [When(@"I wait for state change")]
-        public void WhenIWaitForStateChange()
-        {
-            // The state might take a while to update
-            Thread.Sleep(1000);
         }
 
         [Then(@"Must have value of (.*)")]

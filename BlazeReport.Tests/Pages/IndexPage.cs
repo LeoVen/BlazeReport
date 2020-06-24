@@ -10,13 +10,13 @@ namespace BlazeReport.Tests.Pages
 
         public IndexPage(IWebDriver webDriver)
         {
-            this. webDriver = webDriver;
+            this.webDriver = webDriver;
         }
 
         public void OpenIndexPage()
         {
             // Where the blazor app is launched
-            webDriver.Navigate().GoToUrl("https://localhost:44350/");
+            webDriver.Navigate().GoToUrl(@"https://localhost:44350/");
         }
 
         public void ClickButton()

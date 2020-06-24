@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeReport.Web", "BlazeReport.Web\BlazeReport.Web.csproj", "{4868E298-24A0-4573-AF7A-6BA5756DF684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazeReport.Web", "BlazeReport.Web\BlazeReport.Web.csproj", "{4868E298-24A0-4573-AF7A-6BA5756DF684}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeReport.Tests", "BlazeReport.Tests\BlazeReport.Tests.csproj", "{72435D40-C19A-4318-BCEC-69E71638224A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazeReport.Tests", "BlazeReport.Tests\BlazeReport.Tests.csproj", "{72435D40-C19A-4318-BCEC-69E71638224A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazeReport.Commons", "BlazeReport.Commons\BlazeReport.Commons.csproj", "{15A3C442-E8AA-4501-8C83-1B4E257EA40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazeReport.Commons", "BlazeReport.Commons\BlazeReport.Commons.csproj", "{15A3C442-E8AA-4501-8C83-1B4E257EA40E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
