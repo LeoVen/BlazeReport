@@ -9,7 +9,7 @@ namespace BlazeReport.Tests.Factories
 {
     public static class ReportFactory
     {
-        public static readonly string ReportPath = $"{AppDomain.CurrentDomain.BaseDirectory}ExtentBlazeReport.html";
+        public static readonly string ReportPath = "C:\\Dev\\ExtentReport\\";
 
         public static IExtentReporter Default()
         {

@@ -1,4 +1,5 @@
 ﻿using BlazeReport.Tests.Factories;
+using BoDi;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
@@ -8,7 +9,7 @@ namespace BlazeReport.Tests.Common
 	/// Contains logic for setting up the webdriver.
 	/// </summary>
     [Binding]
-    public class WebDriverHooks
+    public static class WebDriverHooks
     {
 		/// <summary>
 		/// Before each scenario, create a new IWebDriver for isolation
