@@ -41,13 +41,13 @@ namespace BlazeReport.Tests.Hooks
 		/// <summary>
 		/// Create a scenario node for each scenario inside a feature
 		/// </summary>
-		[BeforeScenario]
+		[BeforeScenario(@"Report")]
 		public static void BeforeScenario(ScenarioContext context)
         {
 			scenario = feature.CreateNode<Scenario>(context.ScenarioInfo.Title);
 		}
 
-		[AfterStep]
+		[AfterStep(@"Report")]
 		public static void AfterStep(ScenarioContext scenarioContext)
 		{
 			var builder = new ScenarioStepBuilder(scenario, scenarioContext);
