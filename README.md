@@ -2,17 +2,17 @@
 
 A minimal example of a Blazor App with:
 
-* Blazor
-* NUnit
-* Selenium
-* SpecFlow
-* ExtentReports
+* [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
+* [NUnit](https://nunit.org/)
+* [Selenium](https://www.selenium.dev/)
+* [SpecFlow](https://specflow.org/)
+* [ExtentReports](http://extentreports.com/)
 
 ## Projects
 
 * BlazeReport.Commons - A Blazor Class Library
 * BlazeReport.Tests - A NUnit Test Project
-* BlazeReport.Web - A Blazro App
+* BlazeReport.Web - A Blazor App
 
 ## Blazor
 
