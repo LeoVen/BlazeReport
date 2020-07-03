@@ -1,13 +1,10 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace BlazeReport.Tests.Steps
 {
     /// <summary>
-    /// A test that doesn't use a WebDriver
+    /// A test that doesn't uses a WebDriver
     /// </summary>
     [Binding]
     class MathSteps

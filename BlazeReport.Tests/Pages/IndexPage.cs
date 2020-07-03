@@ -6,7 +6,14 @@ namespace BlazeReport.Tests.Pages
 {
     public class IndexPage
     {
+        private readonly string buttonId = "clicker";
+        private readonly string counterId = "counter";
+
         private readonly IWebDriver webDriver;
+
+        public IWebElement ClickButton => webDriver.FindElement(By.Id(buttonId));
+
+        public IWebElement Counter => webDriver.FindElement(By.Id(counterId));
 
         public IndexPage(IWebDriver webDriver)
         {
@@ -19,23 +26,21 @@ namespace BlazeReport.Tests.Pages
             webDriver.Navigate().GoToUrl(@"https://localhost:44350/");
         }
 
-        public void ClickButton()
+        public void ClickBidiButton()
         {
-            var clickButton = webDriver.FindElement(By.Id("clicker"));
-            clickButton.Click();
+            ClickButton.Click();
         }
 
         public void RightClickButton()
         {
             Actions actions = new Actions(webDriver);
-            var clickButton = webDriver.FindElement(By.Id("clicker"));
-            actions.ContextClick(clickButton).Perform();
+            actions.ContextClick(ClickButton).Perform();
         }
 
         public int GetCounter()
         {
-            var counterValue = webDriver.FindElement(By.Id("counter")).Text;
-            return string.IsNullOrEmpty(counterValue) ? 0 : Convert.ToInt32(counterValue);
+            var counterText = Counter.Text;
+            return string.IsNullOrEmpty(counterText) ? 0 : Convert.ToInt32(counterText);
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Core;
+﻿using AventStack.ExtentReports.Core;
 using AventStack.ExtentReports.Reporter;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BlazeReport.Tests.Factories
 {

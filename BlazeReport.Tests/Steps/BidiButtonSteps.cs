@@ -20,29 +20,30 @@ namespace BlazeReport.Tests.Steps
         [Given(@"I open the index page")]
         public void GivenIOpenTheIndexPage()
         {
-            indexPage.OpenIndexPage();
+            // Goes to index page and sleeps the thread for a while to give a
+            // chance for the Blazor page to load
+            ActionWaits.PageWait(() => indexPage.OpenIndexPage());
         }
 
         [Given(@"I click the button")]
         public void GivenIClickTheButton()
         {
-            // The page might take a while for loading when it comes from the blazor app server
-            Thread.Sleep(1000);
-            indexPage.ClickButton();
+            // The webdriver might be too fast and the Blazor component's state
+            // might not have enough time to reload, thus making the unit tests
+            // unreliable: sometimes failing, others, passing.
+            ActionWaits.StateWait(() => indexPage.ClickBidiButton());
         }
 
         [Given(@"I right click the button")]
         public void GivenIRightClickTheButton()
         {
-            Thread.Sleep(1000);
-            indexPage.RightClickButton();
+            ActionWaits.StateWait(() => indexPage.RightClickButton());
         }
 
         [Then(@"Must have value of (.*)")]
         public void ThenMustHaveValueOf(int value)
         {
-            int counterValue = indexPage.GetCounter();
-            Assert.AreEqual(value, counterValue);
+            Assert.AreEqual(value, indexPage.GetCounter());
         }
     }
 }
