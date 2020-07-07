@@ -2,7 +2,6 @@
 using AventStack.ExtentReports.Gherkin.Model;
 using BlazeReport.Tests.Common;
 using BlazeReport.Tests.Factories;
-using System.Diagnostics;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Bindings;
 
@@ -26,6 +25,12 @@ namespace BlazeReport.Tests.Hooks
         {
             extent = new AventStack.ExtentReports.ExtentReports();
             extent.AttachReporter(ReportFactory.Default());
+
+            extent.AddSystemInfo("User Name", System.Environment.UserName);
+            extent.AddSystemInfo("Machine Name", System.Environment.MachineName.ToString());
+            extent.AddSystemInfo("OS Version", System.Environment.OSVersion.VersionString);
+            extent.AddSystemInfo("Logical Cores", System.Environment.ProcessorCount.ToString());
+            extent.AddSystemInfo("CLR Version", System.Environment.Version.ToString());
         }
 
         /// <summary>
@@ -72,7 +77,7 @@ namespace BlazeReport.Tests.Hooks
         public static void AfterTestRun()
         {
             extent.Flush();
-            Process.Start(@"cmd.exe ", @$"/c {ReportFactory.ReportPath}index.html");
+            ReportFactory.LaunchReport();
         }
     }
 }

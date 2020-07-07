@@ -11,18 +11,18 @@ namespace BlazeReport.Tests.Common
     /// </summary>
     public class ScenarioStepBuilder
     {
-        private readonly ScenarioContext scenario;
-        private readonly ExtentTest extent;
+        private readonly ScenarioContext scenarioContext;
+        private readonly ExtentTest scenario;
 
-        public ScenarioStepBuilder(ExtentTest extent, ScenarioContext scenario)
+        public ScenarioStepBuilder(ExtentTest scenario, ScenarioContext scenarioContext)
         {
-            this.extent = extent;
             this.scenario = scenario;
+            this.scenarioContext = scenarioContext;
         }
 
         public void StepDefinitionGiven()
         {
-            if (scenario.TestError == null)
+            if (scenarioContext.TestError == null)
                 CreateScenario(StepDefinitionType.Given);
             else
                 CreateScenarioFailOrError(StepDefinitionType.Given);
@@ -30,7 +30,7 @@ namespace BlazeReport.Tests.Common
 
         public void StepDefinitionWhen()
         {
-            if (scenario.TestError == null)
+            if (scenarioContext.TestError == null)
                 CreateScenario(StepDefinitionType.When);
             else
                 CreateScenarioFailOrError(StepDefinitionType.When);
@@ -38,7 +38,7 @@ namespace BlazeReport.Tests.Common
 
         public void StepDefinitionThen()
         {
-            if (scenario.TestError == null)
+            if (scenarioContext.TestError == null)
                 CreateScenario(StepDefinitionType.Then);
             else
                 CreateScenarioFailOrError(StepDefinitionType.Then);
@@ -46,20 +46,20 @@ namespace BlazeReport.Tests.Common
 
         private ExtentTest CreateScenario(StepDefinitionType stepDefinitionType)
         {
-            var scenarioStepContext = scenario.StepContext.StepInfo.Text;
+            var stepText = scenarioContext.StepContext.StepInfo.Text;
 
             return stepDefinitionType switch
             {
-                StepDefinitionType.Given => extent.CreateNode<Given>(scenarioStepContext),
-                StepDefinitionType.Then => extent.CreateNode<Then>(scenarioStepContext),
-                StepDefinitionType.When => extent.CreateNode<When>(scenarioStepContext),
+                StepDefinitionType.Given => scenario.CreateNode<Given>(stepText),
+                StepDefinitionType.Then => scenario.CreateNode<Then>(stepText),
+                StepDefinitionType.When => scenario.CreateNode<When>(stepText),
                 _ => throw new ArgumentOutOfRangeException(nameof(stepDefinitionType), stepDefinitionType, null),
             };
         }
 
         private void CreateScenarioFailOrError(StepDefinitionType stepDefinitionType)
         {
-            var error = scenario.TestError;
+            var error = scenarioContext.TestError;
 
             if (error.InnerException == null)
             {
@@ -70,6 +70,5 @@ namespace BlazeReport.Tests.Common
                 CreateScenario(stepDefinitionType).Fail(error.InnerException);
             }
         }
-
     }
 }
